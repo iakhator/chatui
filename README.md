@@ -5,6 +5,13 @@ Simple chat UI lnterface
 - Get all chats
 - Post message
 
+## Approach
+
+- Due to no time I wanted to build this fast without much hassle
+- tech of choice React,axios and dayjs
+- dayjs for parsing date, axios for making request to the api
+- React was chosen become of it component base achitecture, reactivity and ease of spinning up a simple app.
+
 ## What Could Be Improved
 
 - Add caching.
