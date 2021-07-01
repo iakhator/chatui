@@ -19,14 +19,13 @@ export default function ChatWrapper () {
         console.error(e)
         setLoading(false)
       }
-    }
+    } 
 
     fetchChatMessages()
   }, [])
 
   const handleSubmit = async () => {
     try {
-      debugger
       const response =  await axios.post(null,  {author: loggedUser, message: input })
       console.log(response, 'response')
       setChats([...chats, response.data]);

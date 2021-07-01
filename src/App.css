@@ -58,6 +58,11 @@ body {
   color: #bdc4c9;
 }
 
+.chat__messages p {
+  color: #434C54;
+  margin: 5px 0;
+}
+
 .chat__messages-date {
   align-self: flex-end;
 }
@@ -89,6 +94,7 @@ body {
   padding: 12px;
   border-radius: 5px;
   font-size: 1.4rem;
+  color: #434C54;
   border: 2px solid #2e76a4;
   caret-color: #2e76a4;
 }

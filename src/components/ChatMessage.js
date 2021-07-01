@@ -1,4 +1,5 @@
 import React from 'react';
+import dayjs from 'dayjs';
 
 export default function ChatMessage(props) {
   const {chat, loggedUser} = props
@@ -10,7 +11,7 @@ export default function ChatMessage(props) {
     >
       <span>{chat.author}</span>
       <p>{chat.message}</p>
-      <span className="chat__messages-date">{chat.timestamp}</span>
+      <span className="chat__messages-date">{dayjs(chat.timestamp).format('DD MMM YYYY h:mm A')}</span>
     </div>
   )
 }
