@@ -1,51 +1,33 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import instance from '../config';
+import ChatMessages from './ChatMessage'
 
 export default function ChatWrapper () {
+   const [loggedUser, setLoggedUser] = useState("Itua");//fake loggedin user
+   const [loading, setLoading] = useState(false);
+  const [chats, setChats] = useState([]);
+
+  useEffect(() => {
+    async function fetchChatMessages () {
+      try {
+        const response = await instance.get();
+        setChats(response.data)
+        console.log(response, 'jdjdjdjdj')
+      } catch (e) {
+        console.error(e)
+      }
+    }
+
+    fetchChatMessages()
+  }, [])
   return(
     <>
      <div className="wrap">
         <div className="chat__wrapper">
           <div className="chat">
-            <div className="chat__messages">
-              <span>author</span>
-              <p>message</p>
-              <span className="chat__messages-date">date</span>
-            </div>
-            <div className="chat__messages">
-              <span>author</span>
-              <p>message</p>
-              <span className="chat__messages-date">date</span>
-            </div>
-            <div className="chat__messages">
-              <span>author</span>
-              <p>message</p>
-              <span className="chat__messages-date">date</span>
-            </div>
-            <div className="chat__messages">
-              <span>author</span>
-              <p>message</p>
-              <span className="chat__messages-date">date</span>
-            </div>
-            <div className="chat__messages">
-              <span>author</span>
-              <p>message</p>
-              <span className="chat__messages-date">date</span>
-            </div>
-            <div className="chat__messages">
-              <span>author</span>
-              <p>message</p>
-              <span className="chat__messages-date">date</span>
-            </div>
-            <div className="chat__messages">
-              <span>author</span>
-              <p>message</p>
-              <span className="chat__messages-date">date</span>
-            </div>
-            <div className="chat__messages user-chat">
-              <span>author</span>
-              <p>message</p>
-              <span className="chat__messages-date">date</span>
-            </div>
+            {chats.map((chat) => (
+               <ChatMessages  key={chat._id} chat={chat} loggedUser={loggedUser}/>
+            ))}
           </div>
         </div>
       </div>
